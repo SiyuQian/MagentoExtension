@@ -287,7 +287,7 @@ class Reviewscouk_Reviews_Adminhtml_ReviewsController extends Mage_Adminhtml_Con
                 $Item = Mage::getModel('catalog/product')->setStoreId($Item->getStoreId())->load($Item->getProductId());
                 if ($Item->getId())
                 {
-                    $booster[] = array($order->customer_email, $order->customer_firstname.' '.$order->customer_lastname, $order->entity_id, $Item->getSku(), $Item->getName(), $order->created_at, $order->updated_at, $order->status, $order->store_id, $order->store_name);
+                    $booster[] = array($order->customer_email, $order->customer_firstname.' '.$order->customer_lastname, $order->increment_id, $Item->getSku(), $Item->getName(), $order->created_at, $order->updated_at, $order->status, $order->store_id, $order->store_name);
                 }
             }
         }
