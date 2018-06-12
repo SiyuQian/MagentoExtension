@@ -266,7 +266,7 @@ class Reviewscouk_Reviews_Adminhtml_ReviewsController extends Mage_Adminhtml_Con
 			 ->_setActiveMenu('reviewstab')
 			 ->_title($this->__('Review Booster Download'));
 
-        $booster = array(array('name','email','order_id','product_id','product_name','date_created','date_updated', 'status', 'store_id', 'store_name'));
+        $booster = array(array('email','name','order_id','product_id','product_name','date_created','date_updated', 'status', 'store_id', 'store_name'));
 
         $time = time(); // Now
         $from = date('Y-m-d H:i:s', $time - (60*60*24*30*3)); // 3 Months
