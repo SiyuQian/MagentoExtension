@@ -137,7 +137,7 @@ class Reviewscouk_Reviews_Helper_Data extends Mage_Core_Helper_Abstract {
      * Request the Code for the static product widget via curl
      */
     public function getStaticProductWidget($sku){
-        $url = $this->getReviewsUrl('widget').'product-seo/widget?store='.$this->getStoreName().'&sku='.$sku.'&primaryClr='.urlencode($this->getWidgetColor());
+        $url = $this->getReviewsUrl('widget').'product-seo/widget?store='.$this->getStoreName().'&sku='.urlencode($sku).'&primaryClr='.urlencode($this->getWidgetColor());
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
