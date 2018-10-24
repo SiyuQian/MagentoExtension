@@ -142,8 +142,14 @@ class Reviewscouk_Reviews_Helper_Data extends Mage_Core_Helper_Abstract {
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $widgetHtml = curl_exec($ch);
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
-        return $widgetHtml;
+        
+        if ($httpcode == 200) {
+            return $widgetHtml;
+        }
+        
+        return '';
     }
 
     /*
