@@ -54,11 +54,12 @@ class Reviewscouk_Reviews_Model_Observer
 			if ($this->getStoreId($magento_store_id) && $this->getApiKey($magento_store_id) && $this->helper->areInvitationsEnabled($magento_store_id))
 			{
 				$merchantResponse = $this->apiPost('merchant/invitation', array(
-					'source' => 'magento',
-					'name' => $name,
-					'email' => $order->getCustomerEmail(),
-					'order_id' => $order->getRealOrderId(),
-				), $magento_store_id);
+					'source'       => 'magento',
+					'name'         => $name,
+					'email'        => $order->getCustomerEmail(),
+					'order_id'     => $order->getRealOrderId(),
+                    'country_code' => $order->getShippingAddress()->getCountryId(),
+                ), $magento_store_id);
 
 				$items = $order->getAllVisibleItems();
 				foreach ($items as $item)
@@ -85,16 +86,16 @@ class Reviewscouk_Reviews_Model_Observer
 				}
 
 				$productResponse = $this->apiPost('product/invitation', array(
-					'source' => 'magento',
-					'name' => $name,
-					'email' => $order->getCustomerEmail(),
-					'order_id' => $order->getRealOrderId(),
-					'products' => $p
+					'source'       => 'magento',
+					'name'         => $name,
+					'email'        => $order->getCustomerEmail(),
+					'order_id'     => $order->getRealOrderId(),
+                    'country_code' => $order->getShippingAddress()->getCountryId(),
+                    'products'     => $p
 				), $magento_store_id);
 			}
-		}
-		catch (Exception $e)
-		{
+		} catch (Exception $e) {
+		    // Do nothing with exception.
 		}
 	}
 
